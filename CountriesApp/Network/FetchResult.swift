@@ -1,5 +1,5 @@
 //
-//  CoreDataManager.swift
+//  FetchingResult.swift
 //  CountriesApp
 //
 //  Created by Maksim Torburg on 25.04.2020.
@@ -8,12 +8,7 @@
 
 import Foundation
 
-class CoreDataManager {
-    static let instance = CoreDataManager()
-    
-    private init() {
-        
-    }
-    
-    
+struct FetchResult: Codable {
+    let next: String
+    let countries: [Country]
 }

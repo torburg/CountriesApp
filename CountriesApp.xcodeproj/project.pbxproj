@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		88E72419245484970013B4D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E72418245484970013B4D5 /* AppDelegate.swift */; };
 		88E7241B245484970013B4D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E7241A245484970013B4D5 /* SceneDelegate.swift */; };
-		88E7241D245484970013B4D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E7241C245484970013B4D5 /* ViewController.swift */; };
+		88E7241D245484970013B4D5 /* CountriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E7241C245484970013B4D5 /* CountriesListViewController.swift */; };
 		88E72420245484970013B4D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E7241E245484970013B4D5 /* Main.storyboard */; };
 		88E72423245484970013B4D5 /* CountriesApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88E72421245484970013B4D5 /* CountriesApp.xcdatamodeld */; };
 		88E724252454849E0013B4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E724242454849E0013B4D5 /* Assets.xcassets */; };
 		88E724282454849E0013B4D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E724262454849E0013B4D5 /* LaunchScreen.storyboard */; };
 		88E724332454849E0013B4D5 /* CountriesAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E724322454849E0013B4D5 /* CountriesAppTests.swift */; };
+		88E7243E24548A5B0013B4D5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E7243D24548A5B0013B4D5 /* CoreDataManager.swift */; };
+		88E7244224548B2E0013B4D5 /* CountriesFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E7244124548B2E0013B4D5 /* CountriesFetcher.swift */; };
+		88E7244424548C850013B4D5 /* CountryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E7244324548C850013B4D5 /* CountryViewCell.swift */; };
+		88E7244624548DF80013B4D5 /* FetchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E7244524548DF80013B4D5 /* FetchResult.swift */; };
+		88E7244824548E420013B4D5 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E7244724548E420013B4D5 /* Country.swift */; };
+		88E7244C2459AF420013B4D5 /* CountryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88E7244B2459AF410013B4D5 /* CountryViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +37,7 @@
 		88E72415245484970013B4D5 /* CountriesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountriesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88E72418245484970013B4D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88E7241A245484970013B4D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		88E7241C245484970013B4D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		88E7241C245484970013B4D5 /* CountriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesListViewController.swift; sourceTree = "<group>"; };
 		88E7241F245484970013B4D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		88E72422245484970013B4D5 /* CountriesApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CountriesApp.xcdatamodel; sourceTree = "<group>"; };
 		88E724242454849E0013B4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -40,6 +46,12 @@
 		88E7242E2454849E0013B4D5 /* CountriesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountriesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88E724322454849E0013B4D5 /* CountriesAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesAppTests.swift; sourceTree = "<group>"; };
 		88E724342454849E0013B4D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88E7243D24548A5B0013B4D5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		88E7244124548B2E0013B4D5 /* CountriesFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesFetcher.swift; sourceTree = "<group>"; };
+		88E7244324548C850013B4D5 /* CountryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewCell.swift; sourceTree = "<group>"; };
+		88E7244524548DF80013B4D5 /* FetchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResult.swift; sourceTree = "<group>"; };
+		88E7244724548E420013B4D5 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		88E7244B2459AF410013B4D5 /* CountryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +95,12 @@
 			children = (
 				88E72418245484970013B4D5 /* AppDelegate.swift */,
 				88E7241A245484970013B4D5 /* SceneDelegate.swift */,
-				88E7241C245484970013B4D5 /* ViewController.swift */,
+				88E7241C245484970013B4D5 /* CountriesListViewController.swift */,
+				88E7244324548C850013B4D5 /* CountryViewCell.swift */,
+				88E7244024548AEE0013B4D5 /* Storage */,
+				88E7243F24548AD60013B4D5 /* Network */,
 				88E7241E245484970013B4D5 /* Main.storyboard */,
+				88E7244B2459AF410013B4D5 /* CountryViewCell.xib */,
 				88E724242454849E0013B4D5 /* Assets.xcassets */,
 				88E724262454849E0013B4D5 /* LaunchScreen.storyboard */,
 				88E724292454849E0013B4D5 /* Info.plist */,
@@ -100,6 +116,24 @@
 				88E724342454849E0013B4D5 /* Info.plist */,
 			);
 			path = CountriesAppTests;
+			sourceTree = "<group>";
+		};
+		88E7243F24548AD60013B4D5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				88E7244124548B2E0013B4D5 /* CountriesFetcher.swift */,
+				88E7244524548DF80013B4D5 /* FetchResult.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		88E7244024548AEE0013B4D5 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				88E7243D24548A5B0013B4D5 /* CoreDataManager.swift */,
+				88E7244724548E420013B4D5 /* Country.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +220,7 @@
 				88E724282454849E0013B4D5 /* LaunchScreen.storyboard in Resources */,
 				88E724252454849E0013B4D5 /* Assets.xcassets in Resources */,
 				88E72420245484970013B4D5 /* Main.storyboard in Resources */,
+				88E7244C2459AF420013B4D5 /* CountryViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,9 +238,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88E7241D245484970013B4D5 /* ViewController.swift in Sources */,
+				88E7241D245484970013B4D5 /* CountriesListViewController.swift in Sources */,
+				88E7244824548E420013B4D5 /* Country.swift in Sources */,
 				88E72419245484970013B4D5 /* AppDelegate.swift in Sources */,
+				88E7244424548C850013B4D5 /* CountryViewCell.swift in Sources */,
 				88E72423245484970013B4D5 /* CountriesApp.xcdatamodeld in Sources */,
+				88E7243E24548A5B0013B4D5 /* CoreDataManager.swift in Sources */,
+				88E7244224548B2E0013B4D5 /* CountriesFetcher.swift in Sources */,
+				88E7244624548DF80013B4D5 /* FetchResult.swift in Sources */,
 				88E7241B245484970013B4D5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
