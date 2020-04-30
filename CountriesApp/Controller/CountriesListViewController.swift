@@ -12,21 +12,21 @@ class CountriesListViewController: UIViewController {
 
     @IBOutlet weak var countriesList: UITableView!
     
-    var countries: [Country] = CountriesFetcher().items
-    
+    private var viewModel: CountriesViewModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "Countries"
         countriesList.register(UINib(nibName: "CountryViewCell", bundle: .main), forCellReuseIdentifier: CountryViewCell.reuseIdentifier)
+        viewModel = CountriesViewModel(with: self)
+        viewModel.fetchCountries()
     }
-
-
 }
 
 extension CountriesListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return countries.count
+        return viewModel.countries.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -36,10 +36,19 @@ extension CountriesListViewController: UITableViewDataSource, UITableViewDelegat
             print("Can't create reusable Cell in TableView")
             return dequedCell
         }
-        let country = countries[indexPath.row]
+        let country = viewModel.countries[indexPath.row]
         cell.fill(with: country)
     
         return cell
     }
 }
 
+extension CountriesListViewController: CountriesViewModelDelegate {
+    func fetchCompleted() {
+        countriesList.reloadData()
+    }
+    
+    func fetchFailed() {
+        
+    }
+}

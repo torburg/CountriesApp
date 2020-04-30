@@ -8,58 +8,37 @@
 
 import Foundation
 
-class CountriesFetcher {
-    var items = [Country]()
-    var nextPage = ""
-    let transferProtocol = "https://"
-    let domain = "rawgit.com/NikitaAsabin/"
+class Fetcher {
+    let session: URLSession
     
-    var pathString = "799e4502c9fc3e0ea7af439b2dfd88fa/raw/7f5c6c66358501f72fada21e04d75f64474a7888/page1.json"
-    
-    init() {
-        load()
+    init(session: URLSession = URLSession.shared) {
+      self.session = session
     }
-    
-    private func load() {
-        guard let url = getURL() else {
-            print("Cannot get URL")
+
+    func getResults(from urlString: String, for page: String, completion: @escaping (Result<FetcheableResponse, DataResponseError>)->Void) {
+
+        let fullURL = urlString + page
+        guard let url = URL(string: fullURL) else {
+            print("Fail to create URL from url: \(urlString) and page: \(page)")
             return
         }
-        if let data = performStoreRequest(with: url) {
-            print("Recieve JSON String: \(data)")
-            do {
-                let decoder = JSONDecoder()
-                let result = try decoder.decode(FetchResult.self, from: data)
-                items = result.countries
-                if !result.next.isEmpty {
-                    nextPage = result.next
-                }
-              } catch {
-                  print("JSON Error: \(error)")
-                  items = []
+        session.dataTask(with: url, completionHandler: { data, response, error in
+            if error != nil {
+                completion(Result.failure(DataResponseError.network))
+                return
             }
-        }
+            guard let data = data else {
+                completion(Result.failure(DataResponseError.unknown))
+                return
+            }
+            guard let decodedResponse = try? JSONDecoder().decode(CountriesResponse.self, from: data) else {
+                completion(Result.failure(DataResponseError.decoding))
+                return
+            }
+            completion(Result.success(decodedResponse))
+        }).resume()
     }
-    
-    private func getURL() -> URL? {
-        let urlString = transferProtocol + domain + pathString
-        guard let url = URL(string: urlString) else {
-            return nil
-        }
-        return url
-    }
-    
-    private func performStoreRequest(with url: URL) -> Data? {
-        do {
-            return try Data(contentsOf: url)
-        } catch {
-            print("Download Error: \(error.localizedDescription)")
-            return nil
-        }
-    }
-    
 }
-
 
 extension String {
     func deletingPrefix(_ prefix: String) -> String {
