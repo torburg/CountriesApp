@@ -19,6 +19,7 @@ class CountriesListViewController: UIViewController {
 
         self.title = "Countries"
         countriesList.register(UINib(nibName: "CountryViewCell", bundle: .main), forCellReuseIdentifier: CountryViewCell.reuseIdentifier)
+        countriesList.prefetchDataSource = self
         viewModel = CountriesViewModel(with: self)
         viewModel.fetchCountries()
     }
@@ -43,12 +44,41 @@ extension CountriesListViewController: UITableViewDataSource, UITableViewDelegat
     }
 }
 
+extension CountriesListViewController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+
+        viewModel.fetchCountries()
+        if indexPaths.contains(where: isLoadingCell) {
+            print("done")
+        }
+    }
+}
+
 extension CountriesListViewController: CountriesViewModelDelegate {
-    func fetchCompleted() {
-        countriesList.reloadData()
+    func fetchCompleted(with newIndexPathsToReload: [IndexPath]?) {
+        guard let newIndexPathsToReload = newIndexPathsToReload,
+            let indexPathsToReload = visibleIndexPathsToReload(intersecting: newIndexPathsToReload),
+            !indexPathsToReload.isEmpty else {
+                countriesList.reloadData()
+                return
+        }
+        countriesList.reloadRows(at: indexPathsToReload, with: .automatic)
     }
     
     func fetchFailed() {
         
+    }
+}
+
+extension CountriesListViewController {
+
+    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        return indexPath.row >= viewModel.countries.count
+    }
+
+    func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath]? {
+        let indexPathsForVisibleRows = countriesList.indexPathsForVisibleRows ?? []
+        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
+        return Array(indexPathsIntersection)
     }
 }
