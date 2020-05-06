@@ -12,7 +12,11 @@ class CountriesListViewController: UIViewController {
 
     @IBOutlet weak var countriesList: UITableView!
     
-    private var viewModel: CountriesViewModel!
+    private var viewModel: CountriesViewModel! {
+        didSet {
+            viewModel.fetchCountries()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +25,12 @@ class CountriesListViewController: UIViewController {
         countriesList.register(UINib(nibName: "CountryViewCell", bundle: .main), forCellReuseIdentifier: CountryViewCell.reuseIdentifier)
         countriesList.prefetchDataSource = self
         viewModel = CountriesViewModel(with: self)
-        viewModel.fetchCountries()
     }
 }
 
 extension CountriesListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.countries.count
+        return viewModel.itemsCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -37,10 +40,19 @@ extension CountriesListViewController: UITableViewDataSource, UITableViewDelegat
             print("Can't create reusable Cell in TableView")
             return dequedCell
         }
-        let country = viewModel.countries[indexPath.row]
+        let country = viewModel.getCountry(at: indexPath.row)
         cell.fill(with: country)
     
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        let country = viewModel.getCountry(at: indexPath.row)
+        let countryViewController = CountryViewController()
+        countryViewController.country = country
+
+        navigationController?.pushViewController(countryViewController, animated: true)
     }
 }
 
@@ -73,7 +85,7 @@ extension CountriesListViewController: CountriesViewModelDelegate {
 extension CountriesListViewController {
 
     func isLoadingCell(for indexPath: IndexPath) -> Bool {
-        return indexPath.row >= viewModel.countries.count
+        return indexPath.row >= viewModel.itemsCount
     }
 
     func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath]? {

@@ -16,7 +16,7 @@ protocol CountriesViewModelDelegate: class {
 class CountriesViewModel {
     private weak var delegate: CountriesViewModelDelegate?
     private let fetcher = Fetcher()
-    private(set) var countries: [Country] = [] //CountriesFetcher().items
+    private var countries: [Country] = [] //CountriesFetcher().items
     
     private let endPoint = "https://rawgit.com/NikitaAsabin/"
     private let startPage: String = "799e4502c9fc3e0ea7af439b2dfd88fa/raw/7f5c6c66358501f72fada21e04d75f64474a7888/page1.json"
@@ -31,7 +31,15 @@ class CountriesViewModel {
     init(with delegate: CountriesViewModelDelegate) {
         self.delegate = delegate
     }
+    
+    func getCountry(at index: Int) -> Country {
+        return countries[index]
+    }
 
+    var itemsCount: Int {
+        countries.count
+    }
+    
     func fetchCountries() {
         if nextPage.isEmpty {
             return

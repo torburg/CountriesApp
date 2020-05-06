@@ -38,6 +38,26 @@ class Fetcher {
             completion(Result.success(decodedResponse))
         }).resume()
     }
+    
+    func getImage(from urlString: String, completion: @escaping (Result<FetchableImageResponseable, DataResponseError>)->Void) {
+
+        guard let url = URL(string: urlString) else {
+            print("Fail to create URL from url: \(urlString)")
+            return
+        }
+        session.dataTask(with: url, completionHandler: { data, response, error in
+            if error != nil {
+                completion(Result.failure(DataResponseError.network))
+                return
+            }
+            guard let data = data else {
+                completion(Result.failure(DataResponseError.decoding))
+                return
+            }
+            let image = FetchableImageResponse(image: data)
+            completion(Result.success(image))
+        }).resume()
+    }
 }
 
 extension String {

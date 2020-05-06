@@ -26,20 +26,11 @@ class CountryViewCell: UITableViewCell {
         detailDescription.text = country.description_small
         
         if let countryImageURL = country.image, !countryImageURL.isEmpty {
-            loadImage(url: countryImageURL)
+            self.avatar.setImage(from: countryImageURL)
         } else if let countryFlagURL = country.country_info.flag, !countryFlagURL.isEmpty {
-            loadImage(url: countryFlagURL)
+            self.avatar.setImage(from: countryFlagURL)
+        } else {
+            self.avatar.setImage()
         }
-    }
-
-    func loadImage(url: String) {
-        guard let url = URL(string: url) else {print("Empty url"); return }
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data else { print("Empty data"); return }
-            let image = UIImage(data: data) != nil ?  UIImage(data: data) : UIImage(named: "flag")
-            DispatchQueue.main.async {
-                self.avatar.image = image
-            }
-        }.resume()
     }
 }
