@@ -18,17 +18,17 @@ class CountryViewController: UIViewController {
     @IBOutlet weak var countryName: UILabel!
     private let imagesCollection = GalleryCollectionView()
     @IBOutlet weak var imageControl: UIPageControl!
-    @IBOutlet weak var countryInfoStack: UIStackView!
+    @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var infoViewBottomConstraint: NSLayoutConstraint!
     
     var country: Country?
+    var viewState: ViewState  = .normal
     
     override func viewDidLoad() {
         super.viewDidLoad()
         gallery.dataSource = imagesCollection
         gallery.delegate = imagesCollection
         configure()
-    }
-    @IBAction func changeImage(_ sender: Any) {
     }
 
     func configure() {
@@ -56,6 +56,51 @@ class CountryViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.isTranslucent = true
+        
+        infoView.backgroundColor = .white
+        infoView.layer.cornerRadius = 10
+        let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(moveStackView(_:)))
+        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(moveStackView(_:)))
+        upSwipe.direction = .up
+        downSwipe.direction = .down
+        infoView.addGestureRecognizer(upSwipe)
+        infoView.addGestureRecognizer(downSwipe)
+    }
+    
+    @objc
+    func moveStackView(_ gesture: UISwipeGestureRecognizer) {
+
+        let galleryHeight = self.gallery.frame.height
+        if (gesture.direction == .up && viewState == .normal) {
+            let bottomOfNavigationBar = navigationController?.navigationBar.frame.maxY
+            
+            let frame = CGRect(x: infoView.frame.origin.x, y: bottomOfNavigationBar!, width: infoView.frame.size.width, height: infoView.frame.size.height)
+            UIView.animate(withDuration: 0.3) {
+                self.infoView.frame = frame
+            }
+            
+            infoViewBottomConstraint.constant -= galleryHeight
+            viewState = .extanded
+            return
+        }
+        
+        if (gesture.direction == .down && viewState == .extanded) {
+            let bottomOfGallery = gallery.frame.maxY
+            let frame = CGRect(x: infoView.frame.origin.x, y: bottomOfGallery, width: infoView.frame.size.width, height: infoView.frame.size.height)
+            UIView.animate(withDuration: 0.3) {
+                self.infoView.frame = frame
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.infoViewBottomConstraint.constant += galleryHeight
+            }
+            viewState = .normal
+            return
+        }
+    }
+    
+    enum ViewState {
+        case extanded
+        case normal
     }
 }
 

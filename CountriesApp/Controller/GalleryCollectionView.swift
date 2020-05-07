@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol ImageSliderControlDelagate: class {
-    func changeImage(_ sender: Any)
-}
-
 class GalleryCollectionView: UICollectionView {
     
     var images = [String]()
