@@ -10,7 +10,6 @@ import Foundation
 
 protocol CountriesViewModelDelegate: class {
     func fetchCompleted(with newIndexPathsToReload: [IndexPath]?)
-    func fetchFailed()
 }
 
 class CountriesViewModel {

@@ -12,6 +12,7 @@ class CountriesListViewController: UIViewController {
 
     @IBOutlet weak var countriesList: UITableView!
     
+    private var refreshControl = UIRefreshControl()
     private var viewModel: CountriesViewModel! {
         didSet {
             viewModel.fetchCountries()
@@ -24,6 +25,13 @@ class CountriesListViewController: UIViewController {
         self.title = "Countries"
         countriesList.register(UINib(nibName: "CountryViewCell", bundle: .main), forCellReuseIdentifier: CountryViewCell.reuseIdentifier)
         countriesList.prefetchDataSource = self
+        if #available(iOS 10.0, *) {
+            countriesList.refreshControl = refreshControl
+        } else {
+            countriesList.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(refreshCountries), for: .valueChanged)
+
         viewModel = CountriesViewModel(with: self)
     }
 }
@@ -76,13 +84,15 @@ extension CountriesListViewController: CountriesViewModelDelegate {
         }
         countriesList.reloadRows(at: indexPathsToReload, with: .automatic)
     }
-    
-    func fetchFailed() {
-        
-    }
 }
 
 extension CountriesListViewController {
+
+    @objc
+    func refreshCountries() {
+        viewModel.fetchCountries()
+        self.refreshControl.endRefreshing()
+    }
 
     func isLoadingCell(for indexPath: IndexPath) -> Bool {
         return indexPath.row >= viewModel.itemsCount
