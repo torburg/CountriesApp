@@ -13,10 +13,16 @@ struct Country: Codable {
     let continent: Continent
     let capital: String
     let population: Int
-    let description_small: String
+    let descriptionSmall: String
     let description: String
     let image: String?
-    let country_info: CountryInfo
+    let countryInfo: CountryInfo
+
+    enum CodingKeys: String, CodingKey {
+        case name, continent, capital, population, description, image
+        case descriptionSmall = "description_small"
+        case countryInfo      = "country_info"
+    }
 }
 
 struct CountryInfo: Codable {
@@ -30,4 +36,18 @@ enum Continent: String, Codable {
     case SouthAmerica   = "South America"
     case Africa         = "Africa"
     case NorthAmerica   = "North America"
+}
+
+extension Country {
+    static func == (lhs: Country, rhs:Country) -> Bool {
+        return lhs.name == rhs.name
+    }
+
+    static func != (lhs: Country, rhs:Country) -> Bool {
+        return !(lhs == rhs)
+    }
+}
+
+struct CountryArray: Codable {
+    let items: [Country]
 }

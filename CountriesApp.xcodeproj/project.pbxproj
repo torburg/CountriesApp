@@ -11,6 +11,7 @@
 		881F213D2461F86B00CB4811 /* FetchableResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F213C2461F86B00CB4811 /* FetchableResponse.swift */; };
 		881F213F246205FE00CB4811 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F213E246205FE00CB4811 /* GalleryCollectionViewCell.swift */; };
 		881F21412462064E00CB4811 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F21402462064E00CB4811 /* Extensions.swift */; };
+		881F214324648EFA00CB4811 /* CountriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F214224648EFA00CB4811 /* CountriesList.swift */; };
 		88DA6621245AFE4900E591C9 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA6620245AFE4900E591C9 /* Result.swift */; };
 		88DA6623245B035200E591C9 /* CountriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA6622245B035200E591C9 /* CountriesViewModel.swift */; };
 		88DA6627245B11BC00E591C9 /* CountriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA6626245B11BC00E591C9 /* CountriesResponse.swift */; };
@@ -47,6 +48,7 @@
 		881F213C2461F86B00CB4811 /* FetchableResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchableResponse.swift; sourceTree = "<group>"; };
 		881F213E246205FE00CB4811 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		881F21402462064E00CB4811 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		881F214224648EFA00CB4811 /* CountriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesList.swift; sourceTree = "<group>"; };
 		88DA6620245AFE4900E591C9 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		88DA6622245B035200E591C9 /* CountriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewModel.swift; sourceTree = "<group>"; };
 		88DA6626245B11BC00E591C9 /* CountriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesResponse.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			children = (
 				88E7243D24548A5B0013B4D5 /* CoreDataManager.swift */,
 				88E7244724548E420013B4D5 /* Country.swift */,
+				881F214224648EFA00CB4811 /* CountriesList.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			files = (
 				88E7241D245484970013B4D5 /* CountriesListViewController.swift in Sources */,
 				881F213F246205FE00CB4811 /* GalleryCollectionViewCell.swift in Sources */,
+				881F214324648EFA00CB4811 /* CountriesList.swift in Sources */,
 				88E7244824548E420013B4D5 /* Country.swift in Sources */,
 				88E72419245484970013B4D5 /* AppDelegate.swift in Sources */,
 				88E7244424548C850013B4D5 /* CountryViewCell.swift in Sources */,

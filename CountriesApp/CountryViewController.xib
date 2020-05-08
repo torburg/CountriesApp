@@ -12,7 +12,6 @@
                 <outlet property="capital" destination="Gkc-fF-4M2" id="HmR-NF-8wn"/>
                 <outlet property="continent" destination="hDP-eU-rOn" id="La2-AD-kB3"/>
                 <outlet property="countryDescription" destination="oNI-da-97e" id="9sZ-Fl-v1b"/>
-                <outlet property="countryInfoStack" destination="6eG-59-iTE" id="tV6-YB-N2V"/>
                 <outlet property="countryName" destination="9Ui-hH-cTA" id="MAK-GO-EtW"/>
                 <outlet property="gallery" destination="e8V-Gu-ARR" id="G7A-fD-hxH"/>
                 <outlet property="imageControl" destination="fgn-e5-eh1" id="dq5-nV-ra3"/>

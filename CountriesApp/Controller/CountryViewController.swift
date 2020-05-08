@@ -41,10 +41,10 @@ class CountryViewController: UIViewController {
         population.text = country.population.formattedWithSeparator
         continent.text = country.continent.rawValue
         countryDescription.text = country.description
-        let images = country.country_info.images
+        let images = country.countryInfo.images
         if !images.isEmpty {
             imagesCollection.images = images
-        } else if let flag = country.country_info.flag {
+        } else if let flag = country.countryInfo.flag {
             imagesCollection.images.append(flag)
         }
         imagesCollection.imageControl = imageControl

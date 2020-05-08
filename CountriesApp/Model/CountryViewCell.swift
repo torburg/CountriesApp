@@ -22,12 +22,11 @@ class CountryViewCell: UITableViewCell {
         countryName.text = country.name
         capitalName.text = country.capital
         
-        // FIXME: - FIX bottom space in cell when description is empty
-        detailDescription.text = country.description_small
+        detailDescription.text = country.descriptionSmall
         
         if let countryImageURL = country.image, !countryImageURL.isEmpty {
             self.avatar.setImage(from: countryImageURL)
-        } else if let countryFlagURL = country.country_info.flag, !countryFlagURL.isEmpty {
+        } else if let countryFlagURL = country.countryInfo.flag, !countryFlagURL.isEmpty {
             self.avatar.setImage(from: countryFlagURL)
         } else {
             self.avatar.setImage()

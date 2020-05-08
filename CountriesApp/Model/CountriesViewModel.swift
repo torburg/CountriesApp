@@ -47,12 +47,33 @@ class CountriesViewModel {
         let url = endPoint + nextPage
         fetcher.getResults(from: url, for: currentPage) { result in
             switch result {
-            case .failure(let error):
+            case .failure(let fetchError):
+                print(fetchError.reason)
                 DispatchQueue.main.async {
-                    // TODO: - get data from local url
-                    print(error)
+                    do {
+                        try CountriesList.shared.load(from: "Storage")
+                    } catch {
+                        print("Error to load \(error)")
+                    }
+                    self.countries = CountriesList.shared.countries
+                    self.delegate?.fetchCompleted(with: .none)
                 }
             case .success(let response):
+                DispatchQueue.global().async {
+                    for country in response.countries {
+                        if CountriesList.shared.contains(country) {
+                            CountriesList.shared.update(country)
+                        } else {
+                            CountriesList.shared.add(country)
+                        }
+                    }
+                    do {
+                        try CountriesList.shared.save(to: "Storage")
+                    } catch {
+                        print(error)
+                    }
+                }
+                
                 DispatchQueue.main.async {
                     if !self.nextPage.isEmpty {
                         self.currentPage = self.nextPage
