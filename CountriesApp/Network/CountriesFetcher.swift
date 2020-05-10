@@ -9,6 +9,8 @@
 import Foundation
 
 class Fetcher {
+    
+    let storageURL = "Storage"
     let session: URLSession
     
     init(session: URLSession = URLSession.shared) {

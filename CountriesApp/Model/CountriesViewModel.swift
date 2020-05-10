@@ -50,7 +50,7 @@ class CountriesViewModel {
                 print(fetchError.reason)
                 DispatchQueue.main.async {
                     do {
-                        try CountriesList.shared.load(from: "Storage")
+                        try CountriesList.shared.load(from: self.fetcher.storageURL)
                     } catch {
                         print("Error to load \(error)")
                     }
@@ -67,7 +67,7 @@ class CountriesViewModel {
                         }
                     }
                     do {
-                        try CountriesList.shared.save(to: "Storage")
+                        try CountriesList.shared.save(to: self.fetcher.storageURL)
                     } catch {
                         print(error)
                     }
