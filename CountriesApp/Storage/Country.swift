@@ -38,7 +38,7 @@ enum Continent: String, Codable {
     case NorthAmerica   = "North America"
 }
 
-extension Country {
+extension Country: Equatable {
     static func == (lhs: Country, rhs:Country) -> Bool {
         return lhs.name == rhs.name
     }
@@ -46,8 +46,4 @@ extension Country {
     static func != (lhs: Country, rhs:Country) -> Bool {
         return !(lhs == rhs)
     }
-}
-
-struct CountryArray: Codable {
-    let items: [Country]
 }

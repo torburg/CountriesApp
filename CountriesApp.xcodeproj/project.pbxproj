@@ -13,6 +13,8 @@
 		881F21412462064E00CB4811 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F21402462064E00CB4811 /* Extensions.swift */; };
 		881F214324648EFA00CB4811 /* CountriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F214224648EFA00CB4811 /* CountriesList.swift */; };
 		886019292468968600054B73 /* CountrieListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886019282468968600054B73 /* CountrieListTests.swift */; };
+		8860192B246AC75000054B73 /* DataStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8860192A246AC75000054B73 /* DataStoreManager.swift */; };
+		8860192D246B0F8300054B73 /* DataStoreManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8860192C246B0F8200054B73 /* DataStoreManagerTests.swift */; };
 		88DA6621245AFE4900E591C9 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA6620245AFE4900E591C9 /* Result.swift */; };
 		88DA6623245B035200E591C9 /* CountriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA6622245B035200E591C9 /* CountriesViewModel.swift */; };
 		88DA6627245B11BC00E591C9 /* CountriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA6626245B11BC00E591C9 /* CountriesResponse.swift */; };
@@ -51,6 +53,8 @@
 		881F21402462064E00CB4811 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		881F214224648EFA00CB4811 /* CountriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesList.swift; sourceTree = "<group>"; };
 		886019282468968600054B73 /* CountrieListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrieListTests.swift; sourceTree = "<group>"; };
+		8860192A246AC75000054B73 /* DataStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreManager.swift; sourceTree = "<group>"; };
+		8860192C246B0F8200054B73 /* DataStoreManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreManagerTests.swift; sourceTree = "<group>"; };
 		88DA6620245AFE4900E591C9 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		88DA6622245B035200E591C9 /* CountriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewModel.swift; sourceTree = "<group>"; };
 		88DA6626245B11BC00E591C9 /* CountriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesResponse.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			children = (
 				88E724322454849E0013B4D5 /* CountriesAppTests.swift */,
 				886019282468968600054B73 /* CountrieListTests.swift */,
+				8860192C246B0F8200054B73 /* DataStoreManagerTests.swift */,
 				88E724342454849E0013B4D5 /* Info.plist */,
 			);
 			path = CountriesAppTests;
@@ -181,6 +186,7 @@
 				88E7243D24548A5B0013B4D5 /* CoreDataManager.swift */,
 				88E7244724548E420013B4D5 /* Country.swift */,
 				881F214224648EFA00CB4811 /* CountriesList.swift */,
+				8860192A246AC75000054B73 /* DataStoreManager.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -297,6 +303,7 @@
 				88DA6623245B035200E591C9 /* CountriesViewModel.swift in Sources */,
 				88DA6627245B11BC00E591C9 /* CountriesResponse.swift in Sources */,
 				881F213D2461F86B00CB4811 /* FetchableResponse.swift in Sources */,
+				8860192B246AC75000054B73 /* DataStoreManager.swift in Sources */,
 				88E72423245484970013B4D5 /* CountriesApp.xcdatamodeld in Sources */,
 				881F21392461D96400CB4811 /* GalleryCollectionView.swift in Sources */,
 				88E7243E24548A5B0013B4D5 /* CoreDataManager.swift in Sources */,
@@ -313,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8860192D246B0F8300054B73 /* DataStoreManagerTests.swift in Sources */,
 				886019292468968600054B73 /* CountrieListTests.swift in Sources */,
 				88E724332454849E0013B4D5 /* CountriesAppTests.swift in Sources */,
 			);

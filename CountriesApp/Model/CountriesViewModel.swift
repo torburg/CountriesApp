@@ -50,11 +50,12 @@ class CountriesViewModel {
                 print(fetchError.reason)
                 DispatchQueue.main.async {
                     do {
-                        try CountriesList.shared.load(from: self.fetcher.storageURL)
+                        let manager = DataStoreManager(path: self.fetcher.storageURL)
+                        try manager.load()
                     } catch {
                         print("Error to load \(error)")
                     }
-                    self.countries = CountriesList.shared.countries
+                    self.countries = CountriesList.shared.items
                     self.delegate?.fetchCompleted(with: .none)
                 }
             case .success(let response):
@@ -67,7 +68,8 @@ class CountriesViewModel {
                         }
                     }
                     do {
-                        try CountriesList.shared.save(to: self.fetcher.storageURL)
+                        let manager = DataStoreManager(path: self.fetcher.storageURL)
+                        try manager.save(data: CountriesList.shared)
                     } catch {
                         print(error)
                     }
